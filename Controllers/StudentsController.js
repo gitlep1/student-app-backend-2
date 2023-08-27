@@ -1,9 +1,9 @@
 const express = require("express");
 const { getAllStudents, getStudentById } = require("../Queries/StudentsQuerie");
 
-const students = express.Router();
+const studentsController = express.Router();
 
-students.get("/", (req, res) => {
+studentsController.get("/", (req, res) => {
   try {
     const students = getAllStudents();
     res.status(200).json({ payload: students });
@@ -12,7 +12,7 @@ students.get("/", (req, res) => {
   }
 });
 
-students.get("/:id", (req, res) => {
+studentsController.get("/:id", (req, res) => {
   try {
     const { id } = req.params;
     const student = getStudentById(id);
@@ -22,4 +22,4 @@ students.get("/:id", (req, res) => {
   }
 });
 
-module.exports = students;
+module.exports = studentsController;
