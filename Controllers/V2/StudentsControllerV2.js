@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   getAllStudentsV2,
   getAllStudentsWithGradesV2,
@@ -35,7 +36,7 @@ studentsControllerV2.get("/:id", (req, res) => {
 
     res.status(404).json({ error: `Could not find student with id: ${id}` });
   } catch (err) {
-    res.status(404).json({ error: `No student with id: ${id}` });
+    res.status(500).json({ error: err.message });
   }
 });
 
